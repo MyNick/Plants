@@ -1,4 +1,5 @@
 import { Box, Paper, Typography } from '@mui/material';
+import MoistureChart from './MoistureChart';
 
 const plants = ['Cusbara', 'Petruzilia', 'Marva', 'Rozmarin', 'Timin', 'Nana'];
 
@@ -18,8 +19,8 @@ export default function App() {
                 flexDirection: 'column',
               }}
             >
-              <Box sx={{ marginX: 'auto' }}>{plant}</Box>
-              <Box>Here will be the graph</Box>
+              <Box sx={{ marginX: 'auto', paddingY: 1 }}>{plant}</Box>
+              <MoistureChart />
             </Paper>
           );
         })}
