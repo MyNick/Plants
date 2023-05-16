@@ -1,0 +1,39 @@
+*.prof
+.DS_Store
+*.swp
+*.swo
+*.orig
+**/__pycache__/
+.idea/
+tcl/
+
+
+# Created by https://www.gitignore.io/api/virtualenv
+# Edit at https://www.gitignore.io/?templates=virtualenv
+
+### VirtualEnv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+.Python
+[Bb]in
+[Ii]nclude
+[Ll]ib64
+[Ll]ocal
+pyvenv.cfg
+.venv
+pip-selfcheck.json
+
+# End of https://www.gitignore.io/api/virtualenv
+
+.vscode
+env
+venv
+env/**
+venv/**
+core.*
+venv/
+openssl-1.1.0g
+aws_regression_spot*
+gmon.out
+.ipynb_checkpoints
+*.swn
