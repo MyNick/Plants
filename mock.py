@@ -24,6 +24,7 @@ class Plant:
     wateringTime: float
     wateringPeriod: float
     wateringPeriod_units: str
+    arduino_pin: int
 
 
 @app.route('/plants')
