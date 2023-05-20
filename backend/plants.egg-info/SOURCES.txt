@@ -1,0 +1,8 @@
+setup.py
+plants/__init__.py
+plants/db.py
+plants/model.py
+plants.egg-info/PKG-INFO
+plants.egg-info/SOURCES.txt
+plants.egg-info/dependency_links.txt
+plants.egg-info/top_level.txt

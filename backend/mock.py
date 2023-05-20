@@ -7,7 +7,7 @@ from enum import Enum
 from flask import Flask, request
 from flask_cors import CORS
 
-from .model import Plant, UpdatePlantRequest
+from plants.model import Plant, UpdatePlantRequest
 
 logger = logging.getLogger()
 logging.basicConfig(level=logging.INFO)
