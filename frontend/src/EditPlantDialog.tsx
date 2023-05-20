@@ -22,7 +22,9 @@ import { PlantData } from './Plant';
   
   export default function EditPlantDialog({ setDialogOpen, plantData }: EditPlantDialogProps) {
     const { setNotification } = useOutletContext<OutletContext>();
-    const {name} = plantData;
+    const [duration, setDuration] = useState<string>(plantData.wateringDuration.toString());
+    const [period, setPeriod] = useState<string>(plantData.wateringPeriod.toString());
+    const {id, name} = plantData;
   
     const handleClose = () => {
       setDialogOpen(false);
@@ -31,7 +33,9 @@ import { PlantData } from './Plant';
     const { mutate: save } = useMutation(
       () =>
         axios.put(`${API_URL}/plant`, {
-          name: name,
+          id,
+          duration,
+          period,
         }),
       {
         onSuccess: () => {
@@ -48,7 +52,23 @@ import { PlantData } from './Plant';
       <Dialog fullWidth open={true} onClose={handleClose}>
         <DialogTitle> Edit {name} </DialogTitle>
         <DialogContent>
-          
+          <TextField
+            label="Duration"
+            variant="outlined"
+            size="small"
+            margin="normal"
+            sx={{margin: 2}}
+            value={duration}
+            onChange={event => setDuration(event.target.value)}
+          />
+          <TextField
+            label="Period"
+            variant="outlined"
+            size="small"
+            margin="normal"
+            value={period}
+            onChange={event => setPeriod(event.target.value)}
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>

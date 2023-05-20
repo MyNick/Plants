@@ -16,21 +16,25 @@ export interface PlantData {
     id: number;
     name: string;
     lastWatering: number;
-    wateringTime: number;
+    nextWatering: number;
+    wateringDuration: number;
     wateringPeriod: number;
-    wateringPeriod_units: number;
+    wateringPeriodUnits: number;
 }
 
 export default function Plant(props: PlantProps) {
     const { setNotification } = useOutletContext<OutletContext>();
     const {onEdit} = props;
-    const {id, name, lastWatering, wateringTime, wateringPeriod, wateringPeriod_units} = props.data;
-    const lastWateringString = new Date(lastWatering).toLocaleString();
+    const {id, name, lastWatering, nextWatering, wateringDuration, wateringPeriod, wateringPeriodUnits} = props.data;
+    const lastWateringString = new Date(lastWatering * 1000).toLocaleString();
+    const nextWateringString = new Date(nextWatering * 1000).toLocaleString();
 
     const { mutate: water } = useMutation(
         () =>
           axios.post(`${API_URL}/water/${id}`, {
-            name: name,
+            id,
+            wateringDuration,
+            wateringPeriod,
           }),
         {
           onSuccess: () => {
@@ -50,12 +54,15 @@ export default function Plant(props: PlantProps) {
                 minHeight: 300,
                 display: 'flex',
                 flexDirection: 'column',
+                padding:4,
             }}
         >
             <Box sx={{ marginX: 'auto' }}> <h1> {name} </h1> </Box>
-            {wateringTime/1000} seconds every {wateringPeriod} {wateringPeriod_units}.
+            {wateringDuration/1000} seconds every {wateringPeriod} {wateringPeriodUnits}.
             <br/>
-            {lastWateringString}.
+            Last: {lastWateringString}.
+            <br/>
+            Next: {nextWateringString}.
             <Box sx={{ marginX: 'auto' }}>
                 <IconButton color="info" onClick={water}>
                     <WaterDrop/>
