@@ -1,7 +1,7 @@
 import time
 import getpass
 import serial
-from plants.db import get_all
+from plants.db import get_all, track, put
 
 #if getpass.getuser() == 'itago':
 #    s = serial.Serial('/dev/tty.usbserial-14440')

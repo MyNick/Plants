@@ -40,8 +40,6 @@ def update_plant():
 def on_demand_water(plant_id):
     t = watering_table()
     plant = get(plant_id)
-    print(plant.nextWatering)
     plant.nextWatering = time.time()
-    print(plant.nextWatering)
     put(plant)
     return ''

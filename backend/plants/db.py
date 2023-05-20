@@ -1,4 +1,6 @@
 import boto3
+import time
+from decimal import Decimal
 from functools import lru_cache
 from plants.model import Plant
 
@@ -42,5 +44,6 @@ def track(plant) -> None:
     Add plant to history table
     """
     d = plant.to_dict()
+    d['time'] = time.time()
     to_dynamodb_dict(d)
-    history_table().put(Item=d)
+    history_table().put_item(Item=d)
