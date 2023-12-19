@@ -9,6 +9,7 @@ import { OutletContext } from "./App";
 
 interface PlantProps {
   data: PlantData;
+  waterDuration: string;
   onEdit: Dispatch<SetStateAction<PlantData>>;
 }
 export interface PlantData {
@@ -19,14 +20,14 @@ export interface PlantData {
 
 export default function Plant(props: PlantProps) {
   const { setNotification } = useOutletContext<OutletContext>();
-  const { onEdit } = props;
+  const { onEdit, waterDuration } = props;
   const { id, name, arduinoPin } = props.data;
 
   const { mutate: water } = useMutation(
     () =>
       axios.post(`${API_URL}/water/${id}`, {
         id,
-        arduinoPin,
+        seconds: parseFloat(waterDuration),
       }),
     {
       onSuccess: () => {
@@ -63,8 +64,4 @@ export default function Plant(props: PlantProps) {
       </Box>
     </Paper>
   );
-}
-
-function setNotification(arg0: { message: string; type: string }) {
-  throw new Error("Function not implemented.");
 }
