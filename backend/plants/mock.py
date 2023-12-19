@@ -35,6 +35,6 @@ def update_plant():
     return 'success'
 
 
-@app.route('/water/<plant_id>', methods=['POST'])
+@app.route('/plant/<plant_id>/water', methods=['POST'])
 def on_demand_water(plant_id):
     return 'success'

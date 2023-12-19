@@ -1,0 +1,3 @@
+#!/bin/bash
+export AWS_PROFILE=plants
+flask --app plants/server.py run

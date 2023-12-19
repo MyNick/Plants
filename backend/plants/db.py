@@ -33,13 +33,13 @@ def to_dynamodb_dict(d) -> None:
             d[k] = Decimal(v)
 
 
-def put(plant) -> None:
+def put(plant: Plant) -> None:
     d = plant.to_dict()
     to_dynamodb_dict(d)
     watering_table().put_item(Item=d)
 
 
-def track(plant) -> None:
+def track(plant: Plant) -> None:
     """
     Add plant to history table
     """
