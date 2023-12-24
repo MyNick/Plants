@@ -1,0 +1,2 @@
+#!/bin/bash
+flask --host=0.0.0.0 --app plants/server.py run
